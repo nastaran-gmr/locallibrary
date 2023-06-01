@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en,fa" dir="ltr">
+<head>
+{%block title%}<title>local library</title>{%endblock%}
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width , initial-scale=1" >
+{% load static %}
+<link rel="stylesheet" href="{%static 'catalog/styles.css'%}"/>
+</head>
+<body>
+    
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-sm-2">
+                
+            {%block sidebar%}
+            <ul class="sidebar-nav">
+            <li><a href="{%url 'catalog:index'%}">HOME</a></li>
+            <li><a href="{%url 'catalog:books'%}">ALL BOOKS</a></li>
+            <li><a href="">ALL AUTHORS</a></li>
+            <li><a href="/admin/">ADMIN</a></li>
+
+            </ul>
+            {%endblock%}
+               
+
+            </div>
+
+
+            <div class="col-sm-10">
+            {%block content%}{%endblock%}
+            </div>
+        </div>
+
+
+    
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+</html>

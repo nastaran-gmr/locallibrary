@@ -1,0 +1,15 @@
+<h1>list of available book title in my library:</h1>
+
+{%if book_list%}
+    <ul>
+    {%for book in book_list%}
+    
+        <li><a href="{%url 'catalog:bookdetail' book.id%}">{{book.title}}</a></li>
+
+
+    {%endfor%}
+    </ul>
+
+{%else%}
+    <p>library is empty !!!</p>
+{%endif%}    

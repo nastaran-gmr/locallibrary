@@ -9,7 +9,7 @@ class Author (models.Model):
 
 
     def __str__(self) -> str:
-        return '%s,%s' (self.name , self.last_name)
+        return '%s,%s'%(self.name , self.last_name)
     
 
 class Gener (models.Model):
@@ -24,7 +24,10 @@ class Book (models.Model):
     isbn=models.CharField('ISBN',max_length=13,null=True,blank=True,help_text="13 character <a href='https://isbn/'>in this site</a>")
     gener=models.ManyToManyField(Gener ,help_text='select gener of this book')
     summery=models.CharField(max_length=300 ,help_text='enter a brife description of the book')
-    
+
+    def display_gener(self):
+       return' ,'.join([gener.name for gener in self.gener.all()])
+    display_gener.short_description='gener'
 
   
     def __str__(self) -> str:
@@ -50,4 +53,4 @@ class Bookinstance (models.Model):
 
     
     def __str__(self) -> str:
-        return '%s,(%s)'(self.id,self.book.title)
+        return '%s,(%s)'%(self.id,self.book.title)

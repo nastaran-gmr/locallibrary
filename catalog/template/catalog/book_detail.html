@@ -1,0 +1,7 @@
+<h1>{{book.title}}</h1>
+
+
+<p><strong>author:</strong><a>{{book.author}}</a></p>
+<p><strong>summary:</strong>{{book.summary}}</p>
+<p><strong>ISBN:</strong>{{book.ISBN}}</p>
+<p><strong>Gener:</strong>{%for gener in book.gener.all%}<p>{{gener}}</p>{%endfor%}</p>

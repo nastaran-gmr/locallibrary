@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from django.conf import Settings
-from django.conf.urls import static
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
 ]
 
-urlpatterns+=static(Settings.STATIC_URL ,document_root=Settings.STATIC_ROOT)
+urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

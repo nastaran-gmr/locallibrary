@@ -1,0 +1,22 @@
+{%extends "base_generic.html" %}
+
+{%block content%}
+
+<h1>local library home</h1>
+
+<p>welcome to <em>local library</em> a very basic DJANGO website</p>
+
+<h2>dynamic content</h2>
+<ul>
+
+
+    <li><strong>book :</strong>{{num_book}}</li>
+    <li><strong>author :</strong>{{num_author}}</li>
+    <li><strong>available copies :</strong>{{num_bookinstance_available}}</li>
+    <li><strong>copies :</strong>{{num_bookinstance}}</li>
+</ul>
+
+
+
+
+{%endblock%}
