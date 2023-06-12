@@ -5,41 +5,54 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width , initial-scale=1" >
 {% load static %}
-<link rel="stylesheet" href="{%static 'catalog/styles.css'%}"/>
+<link rel="stylesheet" href="{%static 'catalog/style1.css'%}"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
+
 <body>
     
-    <div class="container-fluid">
-
-        <div class="row">
-
-            <div class="col-sm-2">
-                
+    
+    <header>
+        
+         
             {%block sidebar%}
-            <ul class="sidebar-nav">
+            <ul class="nav-list">
             <li><a href="{%url 'catalog:index'%}">HOME</a></li>
             <li><a href="{%url 'catalog:books'%}">ALL BOOKS</a></li>
-            <li><a href="">ALL AUTHORS</a></li>
+            <li><a href="{%url 'catalog:authors'%}">ALL AUTHORS</a></li>
             <li><a href="/admin/">ADMIN</a></li>
+            {% if user.is_authenticated %}
+            <li>User : {{user.username}} |</li>
+            <li><a href="{%url 'logout'%}?next={{request.path}}">LOG OUT</a></li>
+            <li><a href="{%url 'catalog:mybooks'%}">Your books</a></li>
+            {% else %}
+            
+            <a href="/accounts/login/">Log In</a>
+            {% endif %}
 
             </ul>
             {%endblock%}
+        
+    
+    </header>        
                
+            
+    <main>      
 
-            </div>
 
-
-            <div class="col-sm-10">
-            {%block content%}{%endblock%}
-            </div>
+        <div class="testi">
+                
+        {%block content%}{%endblock%}
         </div>
+
+    </main>    
 
 
     
 
 
 
-    </div>
+    
 
 
 
@@ -54,7 +67,13 @@
 
 
 
-
-
-
+<footer>
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+{% else %}
+   <p>you are not log in</p>
+   <a href="/accounts/login/">Log In</a>
+{% endif %}
+</footer>
+    
 </html>

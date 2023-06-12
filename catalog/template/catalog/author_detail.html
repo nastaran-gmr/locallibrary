@@ -1,0 +1,23 @@
+{%extends "base_generic.html" %}
+
+{%block content%}
+<h1>{{author.name}},{{author.last_name}}</h1>
+
+<ul>
+    <li>{{author.date_of_birth}}</li>
+    <li>{{author.date_of_deth}}</li>
+</ul>
+
+<h2><strong>available book for this author</strong></h2>
+<ul type="1">
+
+    {%for book in author.book_set.all%}
+
+        <li><a href="{%url 'catalog:bookdetail' book.id%}">{{book.title}}</a></li><hr>
+
+    {%endfor%}
+
+    
+
+</ul>
+{%endblock%}

@@ -1,7 +1,28 @@
-<h1>{{book.title}}</h1>
+{%extends "base_generic.html" %}
+
+{%block content%}
+<h1 style="color: rgb(179, 55, 6);border-end-end-radius: 30px;">{{book.title}}</h1>
 
 
-<p><strong>author:</strong><a>{{book.author}}</a></p>
-<p><strong>summary:</strong>{{book.summary}}</p>
-<p><strong>ISBN:</strong>{{book.ISBN}}</p>
-<p><strong>Gener:</strong>{%for gener in book.gener.all%}<p>{{gener}}</p>{%endfor%}</p>
+<p><strong>author:</strong><a href="{%url 'catalog:authors'%}">{{book.author}}</a></p><hr>
+<p><strong>summary:</strong><br>{{book.summery}}</p><hr>
+<p><strong>ISBN:</strong>{{book.isbn}}</p><hr>
+<p><strong>Gener:</strong></p>
+    <ul>
+{%for gener in book.gener.all%}
+     
+    <li>{{gener}}</li>
+    
+{%endfor%}
+    </ul>
+<hr>
+<strong>list of copeis:</strong>
+<ul type="none">
+{%for copy in book.bookinstance_set.all%}
+    <li class="{{copy.text_display}}">{{copy.get_status_display}}</li>
+    <li><strong>book id:</strong>{{copy.id}}<li>
+    <li><strong>due_back:</strong>{{copy.due_back}}</li><hr>
+
+{%endfor%}
+</ul>
+{%endblock%}

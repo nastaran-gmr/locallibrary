@@ -1,3 +1,6 @@
+{%extends "base_generic.html" %}
+
+{%block content%}
 <h1>list of available book title in my library:</h1>
 
 {%if book_list%}
@@ -12,4 +15,5 @@
 
 {%else%}
     <p>library is empty !!!</p>
-{%endif%}    
+{%endif%}  
+{%endblock%}  

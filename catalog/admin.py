@@ -8,9 +8,9 @@ class generadmin(admin.ModelAdmin):
 
 @admin.register(models.Bookinstance)
 class bookinstanceadmin(admin.ModelAdmin):
-    list_filter=('due_back','status')
+    list_filter=('due_back','status','borrower')
     fieldsets=(('book:',{'fields':('book','id')}),
-               ('availablity:',{'fields':('due_back','status')})
+               ('availablity:',{'fields':('due_back','status','borrower')})
 
     )
     
